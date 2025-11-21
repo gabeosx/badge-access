@@ -86,6 +86,13 @@ A lightweight, single-tenant reference application designed to serve as a "Targe
 | Method | URL | Description |
 | :--- | :--- | :--- |
 | `GET` | `/api/entitlements` | List all entitlements |
+| `POST` | `/api/entitlements` | Create a new entitlement |
+| `DELETE` | `/api/entitlements/:id` | Delete an entitlement |
+
+### Audit Logs
+| Method | URL | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/audit-logs` | List recent audit logs (admin only) |
 
 ## Database Schema
 
