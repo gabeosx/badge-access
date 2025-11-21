@@ -1,0 +1,16 @@
+{
+    "extends": "@repo/typescript-config/base.json",
+    "compilerOptions": {
+        "target": "es2016",
+        "module": "commonjs",
+        "rootDir": "./src",
+        "outDir": "./dist"
+    },
+    "exclude": [
+        "prisma",
+        "scripts"
+    ],
+    "include": [
+        "src"
+    ]
+}

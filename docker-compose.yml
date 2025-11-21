@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - DATABASE_URL=file:/data/badgeapp.db
+      - API_SECRET=super-secret-key-123
+    volumes:
+      - ./data:/data
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - api

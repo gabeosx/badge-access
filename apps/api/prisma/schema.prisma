@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  username      String    @unique
+  password_hash String?
+  first_name    String?
+  last_name     String?
+  email         String?
+  is_active     Boolean   @default(true)
+  created_at    DateTime  @default(now())
+
+  entitlements  UserEntitlement[]
+
+  @@map("users")
+}
+
+model Entitlement {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  description String?
+
+  users       UserEntitlement[]
+
+  @@map("entitlements")
+}
+
+model UserEntitlement {
+  user_id        String
+  entitlement_id String
+  
+  user           User        @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  entitlement    Entitlement @relation(fields: [entitlement_id], references: [id], onDelete: Cascade)
+
+  @@id([user_id, entitlement_id])
+  @@map("user_entitlements")
+}
+
+model AuditLog {
+  id          Int      @id @default(autoincrement())
+  timestamp   DateTime @default(now())
+  actor       String?
+  action      String?
+  target_type String?
+  target_id   String?
+  details     String?
+
+  @@map("audit_logs")
+}
