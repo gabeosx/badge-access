@@ -10,6 +10,17 @@ A lightweight, single-tenant reference application designed to serve as a "Targe
 - **Management:** User & Entitlement Management, Audit Logs.
 - **Deployment:** Docker + Docker Compose.
 
+## Screenshots
+
+### Login Page
+![Login Page](docs/images/login.png)
+
+### Dashboard
+![Dashboard](docs/images/dashboard.png)
+
+### Admin Console
+![Admin Console](docs/images/admin.png)
+
 ## Prerequisites
 - Node.js 18+
 - Docker & Docker Compose
